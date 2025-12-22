@@ -10,6 +10,7 @@ function App() {
   return (
     <>
       <SplashLander/>
+      <WorkHistory/>
       
       {/* <div style={{height: '100vh', width: '100vw', backgroundColor: 'blue'}}>
         <p>My blue background</p>
