@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import WorkHistory from './components/WorkHistory'
 import SplashLander from './components/SplashLander'
+import { ChatWindow } from './components/chat/ChatWindow'
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
     <>
       <SplashLander/>
       <WorkHistory/>
+      <ChatWindow/>
       
       {/* <div style={{height: '100vh', width: '100vw', backgroundColor: 'blue'}}>
         <p>My blue background</p>
