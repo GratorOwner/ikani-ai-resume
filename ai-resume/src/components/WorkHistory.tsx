@@ -1,37 +1,35 @@
 import { Card, CardContent, Slider } from '@mui/material'
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
-import { createClient, SupabaseClient } from "@supabase/supabase-js";
-
-export function createSafeSupabaseClient(): SupabaseClient | null {
-    const url = import.meta.env.VITE_SUPABASE_URL;
-    const key = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-    // Basic validation
-    if (!url || !key) {
-        console.error("Supabase env vars missing");
-        return null;
-    }
-
-    try {
-        return createClient(url, key);
-    } catch (err) {
-        console.error("Failed to create Supabase client:", err);
-        return null;
-    }
-}
+import { useEffect, useState } from 'react';
+import { fetchWorkHistory } from '../lib/supabaseApi';
+import type { WorkHistoryItem } from '../types/WorkHistoryItem';
 
 const philWorkHistoryDummy = [
     { id: 0, title: "Software Engineer", company: "Acme Corp" },
     { id: 1, title: "Senior Engineer", company: "Globex" },
     { id: 2, title: "Lead Developer", company: "Initech" },
     { id: 3, title: "Principal Engineer", company: "Umbrella" },
-]; 
+];
 
 export default function WorkHistory() {
-    const supabase = createSafeSupabaseClient();
+    const [workHistoryItems, setWorkHistoryItems] = useState<WorkHistoryItem[]>([]);
+    const [workHistoryError, setWorkHistoryError] = useState(false);
 
-    if (!supabase) {
+    useEffect(() => {
+        fetchWorkHistory()
+            //.then(setWorkHistoryItems)
+            //Test code. Comment out below.
+            .then((data) => {
+                console.log('Data returned was: ', data);
+                setWorkHistoryItems(data);})
+            .catch((err) => {
+                console.error("Failed to load work history:", err);
+                setWorkHistoryError(true)
+            });
+    }, []);
+
+    if (workHistoryError) {
         return (
             <div style={{ padding: 20, color: "red" }}>
                 Could not initialize database connection.
@@ -39,25 +37,7 @@ export default function WorkHistory() {
         );
     }
 
-    const { data, isLoading, error } = useQuery({
-        queryKey: ["workHistory"],
-        queryFn: async () => {
-            const { data, error } = await supabase
-                .from("work_history")
-                .select("*")
-                .order("start_date", { ascending: false });
-
-            if (error) throw error;
-            return data;
-        },
-    });
-
     const sliderValue = useMotionValue(0);
-
-    if (isLoading) return <div>Loading your timeline…</div>;
-    if (error) return <div>Could not load work history.</div>;
-
-    const workHistory = data;
 
     return (
         <div
