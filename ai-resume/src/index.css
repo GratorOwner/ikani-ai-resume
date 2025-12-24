@@ -66,3 +66,32 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/*Use this line below for testing alignments and overflows
+Leave the second asterisk alone. It's part of the css rule*/
+/*   * { outline: 1px solid red; }   */
+
+
+
+/*    ***********STYLES FOR MY CUSTOM COMPONENTS************      */
+
+/*    CHATWINDOW       */
+.chat-wrapper {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+}
+
+.chat-window {
+  width: 600px; /* or whatever your chat width is */
+}
+
+.site-footer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+}
+
+
+
+/***********************/

@@ -30,27 +30,31 @@ export const ChatWindow = () => {
   };
 
   return (
-    <Paper
-      elevation={3}
-      sx={{
-        width: "100%",
-        maxWidth: 480,
-        height: 600,
-        display: "flex",
-        flexDirection: "column",
-        borderRadius: 3,
-        overflow: "hidden",
-      }}
-    >
-      <Box sx={{ p: 2, borderBottom: "1px solid", borderColor: "divider" }}>
-        <Typography variant="h6" fontWeight={600}>
-          Chat with Philip’s AI
-        </Typography>
-      </Box>
+    <div className="chat-wrapper">
+      <div className="chat-window">
+        <Paper
+          elevation={3}
+          sx={{
+            width: "100%",
+            maxWidth: 600,
+            height: 600,
+            display: "flex",
+            flexDirection: "column",
+            borderRadius: 3,
+            overflow: "hidden",
+          }}
+        >
+          <Box sx={{ p: 2, borderBottom: "1px solid", borderColor: "divider" }}>
+            <Typography variant="h6" fontWeight={600}>
+              Chat with Philip’s AI
+            </Typography>
+          </Box>
 
-      <MessageList messages={messages} />
+          <MessageList messages={messages} />
 
-      <ChatInput onSend={handleSend} />
-    </Paper>
+          <ChatInput onSend={handleSend} />
+        </Paper>
+      </div>
+    </div>
   );
 };

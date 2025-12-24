@@ -17,7 +17,7 @@ export default function SplashLander() {
         <div
             style={{
             position: "relative",
-            width: "100vw",
+            width: "100%",
             height: "100vh",
             overflow: "hidden",
         }} 
@@ -35,7 +35,7 @@ export default function SplashLander() {
                     position: "absolute",
                     top: 0,
                     left: 0,
-                    width: "100vw",
+                    width: "100%",
                     height: "100vh", 
                 }}
                 >
@@ -55,15 +55,26 @@ export default function SplashLander() {
                     position: "absolute",
                     bottom: 0,
                     left: 0,
-                    width: "100vw",
+                    width: "100%",
                     background: "lightblue",
                 }}
             >
-                <h2>Philip Ikani's AI agent based resume.</h2>
-                <p>This isn't just any old boring, flat PDF resume. This is a interactive resume,
-                    leveraging AI to provide a more in depth view of Philip's skills and work history. 
-                    No more scanning endlessly boring dull text and unfamiliar formatting. Jump straight 
+                <h1>AI agent resumé</h1>
+                <h3>created by Philip Ikani</h3>
+                <p>This isn't just any old boring, flat PDF resume.  
+                     Jump straight 
                     to the agent or scroll the page for an interactive experience!
+                </p>
+                <p>
+                    No more scanning endlessly boring dull text and unfamiliar formatting.
+                </p>
+                <p>
+                    Chat with an Ai powered agent to find out exactly what you want to know about Philip's 
+                    prior experience and work history. 
+                </p>
+                <p>
+                    Find out exactly how Philip will be a great fit for your
+                    team! Let's go! 🚀
                 </p>
                 <Button>Chat with my AI agent</Button>
                 <Button>Check out an interactive work history summary</Button>
