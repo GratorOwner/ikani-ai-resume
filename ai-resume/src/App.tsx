@@ -13,8 +13,8 @@ function App() {
   return (
     <>
       <SplashLander/>
-      <WorkHistory/>
       <ChatWindow/>
+      <WorkHistory/>
       <CurrentWork/>
       <SiteFooter/>
       
