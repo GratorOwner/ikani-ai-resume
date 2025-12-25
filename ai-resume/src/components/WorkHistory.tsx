@@ -41,11 +41,11 @@ export default function WorkHistory() {
     const sliderValue = useMotionValue(0);
 
     return (
-        <div
+        <div className='panel'
             style={{
                 width: "100vw",
                 height: "100vh",
-                overflow: "hidden",
+                overflow: "auto",
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
@@ -58,8 +58,8 @@ export default function WorkHistory() {
             <div
                 style={{
                     position: "relative",
-                    width: "400px",
-                    height: "260px",
+                    width: "600px",
+                    height: "350px",
                 }}
             >
                 {workHistoryItems.map((job, index) => (

@@ -36,8 +36,9 @@ export default function WorkHistoryCard({
         opacity,
       }}
     >
-      <Card elevation={6} sx={{ height: "100%" }}>
-        <CardContent>
+      <Card className="historyCard" elevation={6}
+        sx={{ height: "100%", overflow: "auto !important", borderRadius: "8px" }}>
+        <CardContent sx={{ overflow: "auto" }}>
           <h2>{job.title}</h2>
           <p>{job.company}</p>
           <p>{job.description}</p>

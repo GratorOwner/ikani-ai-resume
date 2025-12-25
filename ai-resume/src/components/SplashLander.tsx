@@ -14,12 +14,16 @@ export default function SplashLander() {
     }, []);
 
     return (
-        <div
+        <div 
+            className="mainText"
             style={{
             position: "relative",
             width: "100%",
             height: "100vh",
             overflow: "hidden",
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "20px"
         }} 
         >
             <AnimatePresence
@@ -48,31 +52,24 @@ export default function SplashLander() {
             {showLander && (
                 <motion.div
                 key="lander"
+                className="panel"
                 initial={{ height: "10vh" }}
                 animate={{ height: showLander ? "100vh" : "10vh" }}
                 transition={{ duration: 0.6 }}
                 style={{
-                    position: "absolute",
+                    position: "relative",
                     bottom: 0,
                     left: 0,
                     width: "100%",
-                    background: "lightblue",
                 }}
             >
                 <h1>AI agent resumé</h1>
                 <h3>created by Philip Ikani</h3>
-                <p>This isn't just any old boring, flat PDF resume.  
-                     Jump straight 
-                    to the agent or scroll the page for an interactive experience!
-                </p>
-                <p>
-                    No more scanning endlessly boring dull text and unfamiliar formatting.
-                </p>
-                <p>
+                <p className="teaserLandingText">
                     Chat with an Ai powered agent to find out exactly what you want to know about Philip's 
                     prior experience and work history. 
                 </p>
-                <p>
+                <p className="teaserLandingText">
                     Find out exactly how Philip will be a great fit for your
                     team! Let's go! 🚀
                 </p>

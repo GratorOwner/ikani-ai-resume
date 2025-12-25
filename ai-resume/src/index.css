@@ -28,6 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: url("/src/assets/BackgroundOne.jpg") center/cover no-repeat fixed;
 }
 
 h1 {
@@ -67,6 +68,26 @@ button:focus-visible {
   }
 }
 
+/* Translucent grey panel */
+.panel {
+    background: rgba(30, 30, 30, 0.55); /* grey with transparency */
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(4px); /* optional: subtle glass effect */
+}
+
+.mainText {
+  color: #cfcfcf;
+  line-height: 1.6;
+  font-family: system-ui, sans-serif;
+}
+
+.teaserLandingText {
+  font-weight: 600;
+  font-size: large;
+}
+
 /*Use this line below for testing alignments and overflows
 Leave the second asterisk alone. It's part of the css rule*/
 /*   * { outline: 1px solid red; }   */
@@ -79,6 +100,7 @@ Leave the second asterisk alone. It's part of the css rule*/
 .chat-wrapper {
   display: flex;
   justify-content: center; /* centers horizontally */
+  margin-bottom: 20px;
 }
 
 .chat-window {
@@ -93,5 +115,13 @@ Leave the second asterisk alone. It's part of the css rule*/
 }
 
 
+
+/***********************/
+
+
+/*    WORK HISTORY       */
+.historyCard {
+  overflow: auto;
+}
 
 /***********************/

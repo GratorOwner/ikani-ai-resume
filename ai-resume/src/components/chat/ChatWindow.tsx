@@ -30,14 +30,14 @@ export const ChatWindow = () => {
   };
 
   return (
-    <div className="chat-wrapper">
+    <div className="chat-wrapper panel">
       <div className="chat-window">
         <Paper
           elevation={3}
           sx={{
             width: "100%",
             maxWidth: 600,
-            height: 600,
+            height: 500,
             display: "flex",
             flexDirection: "column",
             borderRadius: 3,
