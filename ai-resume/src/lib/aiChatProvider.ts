@@ -8,9 +8,10 @@ import config from '../config.json';
 export async function GetChatResponse(question: string){
 
     return axios
-        .post(`${config.chatResponseUrl}/ask`, question)
+        .post(`${config.chatResponseUrl}/ask`, {question})
         .then((e) => {
-            return e.data;
+            //console.log(e);
+            return e.data.answer;
         })
         .catch((error) => {
             
