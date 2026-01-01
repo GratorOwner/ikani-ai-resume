@@ -19,10 +19,8 @@ export default function WorkHistory() {
 
     useEffect(() => {
         fetchWorkHistory()
-            //.then(setWorkHistoryItems)
-            //Test code. Comment out below.
             .then((data) => {
-                console.log('Data returned was: ', data);
+                //console.log('Data returned was: ', data);
                 setWorkHistoryItems(data);})
             .catch((err) => {
                 console.error("Failed to load work history:", err);

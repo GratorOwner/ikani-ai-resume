@@ -3,9 +3,18 @@ import { useState } from "react";
 import type { ChatMessage } from "./types";
 import { MessageList } from "./MessageList";
 import { ChatInput } from "./ChatInput";
+import { GetChatResponse } from "../../lib/aiChatProvider";
 
 export const ChatWindow = () => {
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const initialAiMsg: ChatMessage = {
+    id: crypto.randomUUID(),
+    role: "assistant",
+    content: "Hello! I'm Oli. Philip's AI resume assistant. My job is to give concise answers " + 
+              "regarding Philip's software development experience.",
+    timestamp: Date.now(),
+  };
+
+  const [messages, setMessages] = useState<ChatMessage[]>([initialAiMsg]);
 
   const handleSend = (content: string) => {
     const userMessage: ChatMessage = {
@@ -17,8 +26,21 @@ export const ChatWindow = () => {
 
     setMessages((prev) => [...prev, userMessage]);
 
-    // Placeholder for your AI pipeline
-    setTimeout(() => {
+    //Api call happens here
+
+    GetChatResponse(content).then((e: string) => {
+      const reply: ChatMessage = {
+        id: crypto.randomUUID(),
+        role: "assistant",
+        //content: `You said: "${content}". I’ll eventually be powered by Philip’s AI resume engine.`,
+        content: e,
+        timestamp: Date.now(),
+      };
+      setMessages((prev) => [...prev, reply]);
+      
+    })
+
+    /*setTimeout(() => {
       const reply: ChatMessage = {
         id: crypto.randomUUID(),
         role: "assistant",
@@ -26,7 +48,7 @@ export const ChatWindow = () => {
         timestamp: Date.now(),
       };
       setMessages((prev) => [...prev, reply]);
-    }, 600);
+    }, 600);*/
   };
 
   return (
