@@ -19,7 +19,7 @@ export async function GetChatResponse(question: string){
             //Don't show them to the user.
             //console.error("Error fetching data:", error);
             //return `Could not get assistant response. Error was: ${error}`;
-
+            console.error(error);
             return "Oops. I apologize but it looks like I couldn't answer your question at the moment. " + 
             "I've reached out to Philip to get this fixed as soon as possible. Thank you for your patience."
         });
