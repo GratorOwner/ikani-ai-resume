@@ -1,17 +1,9 @@
-import { Card, CardContent, Slider } from '@mui/material'
-import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { useQuery } from '@tanstack/react-query';
+import { Slider } from '@mui/material'
+import { useMotionValue } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { fetchWorkHistory } from '../lib/supabaseApi';
 import type { WorkHistoryItem } from '../types/WorkHistoryItem';
 import WorkHistoryCard from './WorkHistoryCard';
-
-const workHistoryItems = [
-    { id: 0, title: "Software Engineer", company: "Acme Corp" },
-    { id: 1, title: "Senior Engineer", company: "Globex" },
-    { id: 2, title: "Lead Developer", company: "Initech" },
-    { id: 3, title: "Principal Engineer", company: "Umbrella" },
-];
 
 export default function WorkHistory() {
     const [workHistoryItems, setWorkHistoryItems] = useState<WorkHistoryItem[]>([]);
@@ -76,7 +68,7 @@ export default function WorkHistory() {
                 max={workHistoryItems.length - 1}
                 step={0.01}
                 defaultValue={0}
-                onChange={(e, v) => sliderValue.set(v as number)}
+                onChange={(_, v) => sliderValue.set(v as number)}
                 sx={{ width: 300 }}
             />
         </div>
