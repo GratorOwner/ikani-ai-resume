@@ -1,3 +1,5 @@
 {
-    "chatResponseUrl": "https://ikani-ai-resume-api.nicegrass-cd5a6342.eastus.azurecontainerapps.io"
+    "chatResponseUrl": "https://ikani-ai-resume-api.nicegrass-cd5a6342.eastus.azurecontainerapps.io",
+    "aiMessageCustom": "Welcome recruiter from :companyName! I'm Oli. Philip's Ai resume agent. I can answer specific questions you have about Philip's professional background and show you exactly why Philip is a great fit for your company. Ask me something about Philip and we'll get started.",
+    "aiMessageGeneric": "Hello! I'm Oli. Philip's AI resume assistant. My job is to give accurate, concise answers regarding Philip's software development experience and to show you why Philip is a great choice for your company."
 }

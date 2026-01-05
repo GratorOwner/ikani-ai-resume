@@ -1,23 +1,52 @@
 import { Box, Paper, Typography } from "@mui/material";
-import { useState } from "react";
+import { fetchAiSeedData } from "../../lib/supabaseApi";
+import { useState, useEffect } from "react";
 import type { ChatMessage } from "./types";
 import { MessageList } from "./MessageList";
 import { ChatInput } from "./ChatInput";
 import { GetChatResponse } from "../../lib/aiChatProvider";
 import { useParams } from "react-router-dom";
+import config from "../../config.json";
+import type { AgentContext } from "../../types/AgentContext";
 
 export const ChatWindow = () => {
   const {code} = useParams();
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [aiAgentContext, setAiAgentContext] = useState<AgentContext>();
   
-  const initialAiMsg: ChatMessage = {
-    id: crypto.randomUUID(),
-    role: "assistant",
-    content: "Hello! I'm Oli. Philip's AI resume assistant. My job is to give concise answers " + 
-              "regarding Philip's software development experience.",
-    timestamp: Date.now(),
-  };
+  useEffect(() => {
+    if(code != undefined){
+      fetchAiSeedData(code).then((resultObj) => {
+        setAiAgentContext(resultObj);
 
-  const [messages, setMessages] = useState<ChatMessage[]>([initialAiMsg]);
+        setMessages([{
+        id: crypto.randomUUID(),
+        role: "assistant",
+        content: config.aiMessageCustom.replace(":companyName", resultObj.company_name),
+        timestamp: Date.now(),
+      }]);
+      })
+      .catch((err) => {
+        //TODO: Log the error. 
+        //      Fall back on generic ai agent
+        setMessages([{
+          id: crypto.randomUUID(),
+          role: "assistant",
+          content: config.aiMessageGeneric,
+          timestamp: Date.now(),
+        }]);
+      })
+    }
+    else{
+      setMessages([{
+        id: crypto.randomUUID(),
+        role: "assistant",
+        content: config.aiMessageGeneric,
+        timestamp: Date.now(),
+      }]);
+    }
+    
+  }, []);
 
   const handleSend = (content: string) => {
     const userMessage: ChatMessage = {
@@ -31,11 +60,10 @@ export const ChatWindow = () => {
 
     //Api call happens here
 
-    GetChatResponse(content).then((e: string) => {
+    GetChatResponse(content, aiAgentContext).then((e: string) => {
       const reply: ChatMessage = {
         id: crypto.randomUUID(),
         role: "assistant",
-        //content: `You said: "${content}". I’ll eventually be powered by Philip’s AI resume engine.`,
         content: e,
         timestamp: Date.now(),
       };

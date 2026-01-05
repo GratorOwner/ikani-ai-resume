@@ -3,12 +3,19 @@
 
 import axios from 'axios';
 import config from '../config.json';
+import type { AgentContext } from '../types/AgentContext';
+import type { ChatResponseContext } from '../types/ChatResponseContext';
 
 
-export async function GetChatResponse(question: string){
+export async function GetChatResponse(question: string, context: AgentContext | undefined){
 
+    const chatResponseContext: ChatResponseContext = {
+        question: question,
+        aiContext: context
+    }
+    
     return axios
-        .post(`${config.chatResponseUrl}/ask`, {question})
+        .post(`${config.chatResponseUrl}/ask`, {chatResponseContext})
         .then((e) => {
             //console.log(e);
             return e.data.answer;
