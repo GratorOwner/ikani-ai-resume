@@ -4,8 +4,11 @@ import type { ChatMessage } from "./types";
 import { MessageList } from "./MessageList";
 import { ChatInput } from "./ChatInput";
 import { GetChatResponse } from "../../lib/aiChatProvider";
+import { useParams } from "react-router-dom";
 
 export const ChatWindow = () => {
+  const {code} = useParams();
+  
   const initialAiMsg: ChatMessage = {
     id: crypto.randomUUID(),
     role: "assistant",
