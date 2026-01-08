@@ -15,7 +15,7 @@ export async function GetChatResponse(question: string, context: AgentContext | 
     }
     
     return axios
-        .post(`${config.chatResponseUrl}/ask`, {chatResponseContext})
+        .post(`${config.aiResumeApiUrl}/ask`, {chatResponseContext})
         .then((e) => {
             //console.log(e);
             return e.data.answer;

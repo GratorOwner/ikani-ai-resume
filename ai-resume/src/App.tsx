@@ -1,6 +1,7 @@
 // App.tsx
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { MainLayout } from "./components/MainLayout"
+import { AddChunks } from "./components/chunks/AddChunks"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           {/* Recruiter-specific URL */}
           <Route path="r/:code" element={null} />
         </Route>
+        <Route path="/AddChunks" element={<AddChunks />} />
       </Routes>
     </BrowserRouter>
   )
