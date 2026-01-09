@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button, TextField, Alert, Box } from "@mui/material";
 import axios from "axios";
 import config from "../../config.json"
+import { getNextResumeContextIdValue } from "../../lib/supabaseApi";
 
 export function ResumeChunk() {
     const [alertMessage, setAlertMessage] = useState("");
@@ -11,19 +12,23 @@ export function ResumeChunk() {
 
     const handleSave = async () => {
         setIsSubmitting(true);
-
+        const tagsDelimited = (document.getElementById("tags") as HTMLInputElement).value;
+        const arrayOfTags = tagsDelimited.split(",").map(s => s.trim());
         const payload = {
+            id: getNextResumeContextIdValue(),
             authCode: (document.getElementById("authCode") as HTMLInputElement).value,
             skill: (document.getElementById("skill") as HTMLInputElement).value,
             location: (document.getElementById("location") as HTMLInputElement).value,
             summary: (document.getElementById("summary") as HTMLInputElement).value,
             example: (document.getElementById("example") as HTMLInputElement).value,
             impact: (document.getElementById("impact") as HTMLInputElement).value,
-            tags: (document.getElementById("tags") as HTMLInputElement).value,
+            tags: arrayOfTags,
         };
 
         try {
-            const res = await axios.post(`${config.aiResumeApiUrl}/addResumeChunk`, payload);
+            console.log(`${config.aiResumeApiUrl}/addResumeContext`);
+            console.log(payload);
+            const res = await axios.post(`${config.aiResumeApiUrl}/addResumeContext`, payload);
 
             setAlertSeverity("success");
             setAlertMessage(res.data.message || "Chunk inserted successfully");
