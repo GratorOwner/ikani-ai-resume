@@ -1,7 +1,5 @@
 
-import { SupabaseClient } from "@supabase/supabase-js";
 import { supabase } from "../utils/supabase";
-import type { AgentContext } from "../types/AgentContext";
 
 export async function fetchWorkHistory() {
   const { data, error } = await supabase

@@ -72,13 +72,9 @@ export function CompanyRoleChunk() {
             <br/><br/>
 
             <TextField id="code" label="Code" variant="outlined" />
-            <TextField id="companyId" label="Company Name" variant="outlined" />
-            <TextField id="companySlug" label="Company Slug" variant="outlined" />
-            <TextField id="roleTitle" label="Role Title" variant="outlined" />
-            <TextField id="roleSlug" label="Role Slug" variant="outlined" />
-            <TextField id="jobUrl" label="Job Url" variant="outlined" />
-            <TextField id="status" label="Status" variant="outlined" />
-            <TextField id="qdrantColl" label="Qdrant Collection name" variant="outlined" />
+
+            {/**This should be read only. The chunk id is an auto-generated uuid */}
+            <TextField id="chunkId" label="Chunk Id" variant="outlined" />
             <br/><br/>
 
             <TextField id="chunkTyp" label="Chunk Type" variant="outlined" />

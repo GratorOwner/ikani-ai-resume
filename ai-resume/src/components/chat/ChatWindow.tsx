@@ -26,7 +26,7 @@ export const ChatWindow = () => {
         timestamp: Date.now(),
       }]);
       })
-      .catch((err) => {
+      .catch(() => {
         //TODO: Log the error. 
         //      Fall back on generic ai agent
         setMessages([{
