@@ -4,18 +4,17 @@
 import axios from 'axios';
 import config from '../config.json';
 import type { AgentContext } from '../types/AgentContext';
-import type { ChatResponseContext } from '../types/ChatResponseContext';
 
 
 export async function GetChatResponse(question: string, context: AgentContext | undefined){
+    const payload: any = { question }; 
 
-    const chatResponseContext: ChatResponseContext = {
-        question: question,
-        aiContext: context
-    }
-    
+    if (context !== undefined) { payload.context = context; }
+
+    console.log("Chat context was: ", payload)
+
     return axios
-        .post(`${config.aiResumeApiUrl}/ask`, {chatResponseContext})
+        .post(`${config.aiResumeApiUrl}/ask`, payload)
         .then((e) => {
             //console.log(e);
             return e.data.answer;
