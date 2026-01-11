@@ -31,20 +31,3 @@ export async function fetchAiSeedData(code: string) {
 
   return data;
 }
-
-export async function getNextResumeContextIdValue(){
-  const {data, error} = await supabase
-  .from("AiResumeAppSettings")
-  .select("nextIdResumeSkillColl")
-  .single();
-
-  //TO DO. Return the current value. Insert incremented by 1 value to the table.
-  
-  console.log(data);
-  if (error) {
-    console.error("Supabase error:", error);
-    throw new Error(error.message);
-  }
-
-  return data;
-}

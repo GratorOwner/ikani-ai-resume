@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, TextField, Alert, Box } from "@mui/material";
 import axios from "axios";
 import config from "../../config.json"
-import { getNextResumeContextIdValue } from "../../lib/supabaseApi";
+import {GetNextResumeSkillId} from "../../lib/chunkProvider";
 
 export function ResumeChunk() {
     const [alertMessage, setAlertMessage] = useState("");
@@ -14,8 +14,9 @@ export function ResumeChunk() {
         setIsSubmitting(true);
         const tagsDelimited = (document.getElementById("tags") as HTMLInputElement).value;
         const arrayOfTags = tagsDelimited.split(",").map(s => s.trim());
+        let idVal = await GetNextResumeSkillId().then();
         const payload = {
-            id: getNextResumeContextIdValue(),
+            id: idVal,
             authCode: (document.getElementById("authCode") as HTMLInputElement).value,
             skill: (document.getElementById("skill") as HTMLInputElement).value,
             location: (document.getElementById("location") as HTMLInputElement).value,
@@ -26,13 +27,19 @@ export function ResumeChunk() {
         };
 
         try {
-            console.log(`${config.aiResumeApiUrl}/addResumeContext`);
-            console.log(payload);
+            //console.log(`${config.aiResumeApiUrl}/addResumeContext`);
+            //console.log(payload);
             const res = await axios.post(`${config.aiResumeApiUrl}/addResumeContext`, payload);
 
             setAlertSeverity("success");
             setAlertMessage(res.data.message || "Chunk inserted successfully");
             setShowAlert(true);
+            (document.getElementById("tags") as HTMLInputElement).value = "";
+            (document.getElementById("skill") as HTMLInputElement).value = "";
+            (document.getElementById("location") as HTMLInputElement).value = "";
+            (document.getElementById("summary") as HTMLInputElement).value = "";
+            (document.getElementById("example") as HTMLInputElement).value = "";
+            (document.getElementById("impact") as HTMLInputElement).value = "";
 
         } catch (err: any) {
             const message =
