@@ -7,7 +7,6 @@ export default function SplashLander() {
             style={{
             position: "relative",
             maxWidth: "100%",
-            height: "55vh",
             marginTop: "20px",
             overflowX: "hidden",
             display: "flex",
