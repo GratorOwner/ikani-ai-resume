@@ -6,10 +6,12 @@ import { ChatWindow } from "./chat/ChatWindow"
 import WorkHistory from "./WorkHistory"
 import CurrentWork from "./CurrentWork"
 import SiteFooter from "./SiteFooter"
+import TitleBar from "./TitleBar"
 
 export function MainLayout() {
   return (
     <>
+      <TitleBar />
       <SplashLander />
       <ChatWindow />
       <WorkHistory />

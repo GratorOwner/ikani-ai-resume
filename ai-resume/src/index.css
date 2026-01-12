@@ -28,8 +28,14 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: url("/src/assets/BackgroundOne.jpg") center/cover no-repeat fixed;
+  /*background: url("/src/assets/BackgroundOne.jpg") center/cover no-repeat fixed;*/
 }
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
 
 h1 {
   font-size: 3.2em;
@@ -70,11 +76,14 @@ button:focus-visible {
 
 /* Translucent grey panel */
 .panel {
-    background: rgba(30, 30, 30, 0.55); /* grey with transparency */
+    /*background: rgba(30, 30, 30, 0.55); /* grey with transparency */
     padding: 2rem;
     border-radius: 12px;
     margin-bottom: 1.5rem;
     backdrop-filter: blur(4px); /* optional: subtle glass effect */
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 .mainText {
@@ -90,7 +99,7 @@ button:focus-visible {
 
 /*Use this line below for testing alignments and overflows
 Leave the second asterisk alone. It's part of the css rule*/
-/*   * { outline: 1px solid red; }   */
+  /* * { outline: 1px solid red; } */
 
 
 
@@ -123,5 +132,88 @@ Leave the second asterisk alone. It's part of the css rule*/
 .historyCard {
   overflow: auto;
 }
+
+/***********************/
+
+
+/***********************/
+
+
+/*    Titlebar       */
+.titlebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  padding: 0 20px;
+  background: white;
+  border-bottom: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.titlebar-left,
+.titlebar-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.titlebar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.titlebar-logo {
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #222;
+}
+
+.titlebar-link {
+  text-decoration: none;
+  color: #444;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.titlebar-link:hover {
+  color: #000;
+}
+
+.contact-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: #444;
+}
+
+.contact-btn:hover {
+  color: #000;
+}
+
+
+/***********************/
+
+
+
+/***********************/
+
+
+/*    SplashLander       */
+
+.splashH1 {
+  justify-self: center;
+  margin-bottom: 5px;
+}
+
 
 /***********************/
