@@ -98,7 +98,7 @@ export const ChatWindow = () => {
           }}
         >
           <Box sx={{ p: 2, borderBottom: "1px solid", borderColor: "divider" }}>
-            <Typography variant="h6" fontWeight={600}>
+            <Typography variant="h6" fontWeight={600} style={{justifySelf: "center"}}>
               Chat with Philip’s AI
             </Typography>
           </Box>
