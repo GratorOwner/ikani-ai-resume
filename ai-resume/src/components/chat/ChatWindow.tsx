@@ -13,7 +13,6 @@ export const ChatWindow = () => {
   const {code} = useParams();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [isAnswering, setIsAnswering] = useState(false);
-  const [answeredSuccess, setAnswerSuccess] = useState(false);
   const [aiAgentContext, setAiAgentContext] = useState<AgentContext>();
   
   useEffect(() => {

@@ -2,7 +2,6 @@ import { Box } from "@mui/material";
 import type { ChatMessage } from "./types";
 import { MessageBubble } from "./MessageBubble";
 import { useChatScroll } from "./useChatScroll";
-import { useState } from "react";
 
 interface Props {
   messages: ChatMessage[];
