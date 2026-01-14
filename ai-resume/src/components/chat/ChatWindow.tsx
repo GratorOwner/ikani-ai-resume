@@ -73,7 +73,7 @@ export const ChatWindow = () => {
 
   const handleSend = (content: string) => {
     handleChatWindowShadowColor("answering");
-    //setIsAnswering(true);
+    setIsAnswering(true);
     const userMessage: ChatMessage = {
       id: crypto.randomUUID(),
       role: "user",
@@ -94,6 +94,7 @@ export const ChatWindow = () => {
       };
       setMessages((prev) => [...prev, reply]);
       handleChatWindowShadowColor("answered");
+      setIsAnswering(false);
       
     })
     /*setTimeout(() => {
@@ -124,13 +125,13 @@ export const ChatWindow = () => {
         >
           <Box sx={{ p: 2, borderBottom: "1px solid", borderColor: "divider" }}>
             <Typography variant="h6" fontWeight={600} style={{justifySelf: "center"}}>
-              Chat with Philip’s AI
+              Ask me about Philip's experience
             </Typography>
           </Box>
 
-          <MessageList messages={messages} />
+          <MessageList messages={messages} isAnswering={isAnswering} />
 
-          <ChatInput onSend={handleSend} onFocus={handleChatInputFocus} />
+          <ChatInput onSend={handleSend} onFocus={handleChatInputFocus} disableInput={isAnswering} />
         </Paper>
       </div>
     </div>

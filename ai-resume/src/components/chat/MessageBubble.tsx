@@ -19,7 +19,7 @@ export const MessageBubble = ({ message }: Props) => {
         sx={{
           p: 1.5,
           maxWidth: "75%",
-          bgcolor: isUser ? "primary.main" : "grey.200",
+          bgcolor: isUser ?"#03a9f4" : "grey.100",
           color: isUser ? "primary.contrastText" : "text.primary",
           borderRadius: 2,
         }}

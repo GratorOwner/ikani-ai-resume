@@ -5,9 +5,10 @@ import { useState } from "react";
 interface Props {
   onSend: (text: string) => void;
   onFocus: () => void;
+  disableInput: boolean;
 }
 
-export const ChatInput = ({ onSend, onFocus }: Props) => {
+export const ChatInput = ({ onSend, onFocus, disableInput }: Props) => {
   const [value, setValue] = useState("");
 
   const handleSend = () => {
@@ -29,14 +30,18 @@ export const ChatInput = ({ onSend, onFocus }: Props) => {
       <TextField
         fullWidth
         size="small"
-        placeholder="Ask the AI about Philip…"
+        disabled={disableInput}
+        placeholder="Type a question here…"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        onKeyDown={(e) => e.key === "Enter" && handleSend()}
+        onKeyDown={(e) => {
+          e.key === "Enter" && handleSend();
+          onFocus();
+        } }
         onFocus={onFocus}
       />
       <IconButton color="primary" onClick={handleSend}>
-        <SendIcon />
+        <SendIcon className="chat-send-icon" disabled={disableInput}/>
       </IconButton>
     </Box>
   );

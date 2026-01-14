@@ -14,15 +14,15 @@ export default function TitleBar({ onContactClick }: TitleBarProps) {
 
       <nav className="titlebar-center">
         {/**This button scrolls page to chat box */}
-        <Link to="/chat" className="titlebar-link">Chat</Link>
+        <Link to="#" className="titlebar-link">Chat</Link>
 
         {/**This button scrolls page to work history panel */}
-        <Link to="/history" className="titlebar-link">History</Link>
+        <Link to="#" className="titlebar-link">History</Link>
 
         {/**This button scrolls page to a section that lets teh user learn about the
          * underlying architecture of the app.
          */}
-        <Link to="/learn" className="titlebar-link">Learn</Link>
+        <Link to="#" className="titlebar-link">Learn</Link>
       </nav>
 
       <div className="titlebar-right">
