@@ -40,8 +40,8 @@ export const ChatInput = ({ onSend, onFocus, disableInput }: Props) => {
         } }
         onFocus={onFocus}
       />
-      <IconButton color="primary" onClick={handleSend}>
-        <SendIcon className="chat-send-icon" disabled={disableInput}/>
+      <IconButton color="primary" onClick={handleSend} disabled={disableInput}>
+        <SendIcon className="chat-send-icon" />
       </IconButton>
     </Box>
   );
