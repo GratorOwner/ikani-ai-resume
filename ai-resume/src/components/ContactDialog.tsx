@@ -2,10 +2,7 @@
 import {
   Dialog,
   DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  TextField
+  DialogContent
 } from "@mui/material";
 
 interface ContactDialogProps { open: boolean; onClose: () => void; }

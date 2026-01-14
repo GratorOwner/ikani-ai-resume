@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import DialogTitle from '@mui/material/DialogTitle';
-import Dialog from '@mui/material/Dialog';
 {/*import { FiMail } from "react-icons/fi";*/}
 
 interface TitleBarProps { onContactClick: () => void; }
@@ -28,9 +26,7 @@ export default function TitleBar({ onContactClick }: TitleBarProps) {
       </nav>
 
       <div className="titlebar-right">
-        <button className="contact-btn" onClick={onContactClick}>
-          {/*<FiMail size={20} />*/}Contact
-        </button>
+        <button className="contact-btn" onClick={onContactClick}>Contact</button>
       </div>
     </header>
   );
