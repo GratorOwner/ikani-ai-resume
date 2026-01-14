@@ -4,9 +4,10 @@ import { useState } from "react";
 
 interface Props {
   onSend: (text: string) => void;
+  onFocus: () => void;
 }
 
-export const ChatInput = ({ onSend }: Props) => {
+export const ChatInput = ({ onSend, onFocus }: Props) => {
   const [value, setValue] = useState("");
 
   const handleSend = () => {
@@ -32,6 +33,7 @@ export const ChatInput = ({ onSend }: Props) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && handleSend()}
+        onFocus={onFocus}
       />
       <IconButton color="primary" onClick={handleSend}>
         <SendIcon />

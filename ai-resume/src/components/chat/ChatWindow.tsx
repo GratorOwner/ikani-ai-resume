@@ -12,6 +12,8 @@ import type { AgentContext } from "../../types/AgentContext";
 export const ChatWindow = () => {
   const {code} = useParams();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [isAnswering, setIsAnswering] = useState(false);
+  const [answeredSuccess, setAnswerSuccess] = useState(false);
   const [aiAgentContext, setAiAgentContext] = useState<AgentContext>();
   
   useEffect(() => {
@@ -48,7 +50,30 @@ export const ChatWindow = () => {
     
   }, []);
 
+  const handleChatWindowShadowColor = (state: string) => {
+    const aiWindowObject = (document.getElementById("aiChatWindow")) as HTMLDivElement;
+    switch (state) {
+      case "typing":
+        aiWindowObject.className = "chat-window";
+      break;
+      case "answering":
+        aiWindowObject.className = "chat-window chat-window--active";
+      break;
+      case "answered":
+        aiWindowObject.className = "chat-window chat-window--answeredSuccess";
+      break;
+      default:
+        break;
+    }
+  }
+
+  const handleChatInputFocus = () => {
+    handleChatWindowShadowColor("typing");
+  }
+
   const handleSend = (content: string) => {
+    handleChatWindowShadowColor("answering");
+    //setIsAnswering(true);
     const userMessage: ChatMessage = {
       id: crypto.randomUUID(),
       role: "user",
@@ -68,9 +93,9 @@ export const ChatWindow = () => {
         timestamp: Date.now(),
       };
       setMessages((prev) => [...prev, reply]);
+      handleChatWindowShadowColor("answered");
       
     })
-
     /*setTimeout(() => {
       const reply: ChatMessage = {
         id: crypto.randomUUID(),
@@ -84,7 +109,7 @@ export const ChatWindow = () => {
 
   return (
     <div className="chat-wrapper panel">
-      <div className="chat-window">
+      <div id="aiChatWindow">
         <Paper
           elevation={3}
           sx={{
@@ -105,7 +130,7 @@ export const ChatWindow = () => {
 
           <MessageList messages={messages} />
 
-          <ChatInput onSend={handleSend} />
+          <ChatInput onSend={handleSend} onFocus={handleChatInputFocus} />
         </Paper>
       </div>
     </div>
