@@ -15,15 +15,9 @@ export function CompanyRoleChunk() {
         const payload = {
             authCode: (document.getElementById("authCode") as HTMLInputElement).value,
             code: (document.getElementById("code") as HTMLInputElement).value,
-            companyId: (document.getElementById("companyId") as HTMLInputElement).value,
-            companySlug: (document.getElementById("companySlug") as HTMLInputElement).value,
-            roleTitle: (document.getElementById("roleTitle") as HTMLInputElement).value,
-            roleSlug: (document.getElementById("roleSlug") as HTMLInputElement).value,
-            jobUrl: (document.getElementById("jobUrl") as HTMLInputElement).value,
-            status: (document.getElementById("status") as HTMLInputElement).value,
-            qdrantColl: (document.getElementById("qdrantColl") as HTMLInputElement).value,
             chunkTyp: (document.getElementById("chunkTyp") as HTMLInputElement).value,
             chunkText: (document.getElementById("chunkText") as HTMLInputElement).value,
+            id: -1
         };
 
         try {
@@ -74,7 +68,7 @@ export function CompanyRoleChunk() {
             <TextField id="code" label="Code" variant="outlined" />
 
             {/**This should be read only. The chunk id is an auto-generated uuid */}
-            <TextField id="chunkId" label="Chunk Id" variant="outlined" />
+            {/*<TextField id="chunkId" label="Chunk Id" variant="outlined" /> */}
             <br/><br/>
 
             <TextField id="chunkTyp" label="Chunk Type" variant="outlined" />
